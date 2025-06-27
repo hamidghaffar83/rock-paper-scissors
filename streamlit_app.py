@@ -1,49 +1,60 @@
 import streamlit as st
 import random
 
-# Set page config
+# Page settings
 st.set_page_config(page_title="Rock Paper Scissors", layout="centered")
 
-# Inject custom CSS
+# Custom styling
 st.markdown("""
     <style>
-    body {
-        background-color: #f4f4f9;
-    }
     .stRadio > div {
         display: flex;
         justify-content: center;
         gap: 20px;
     }
     .stButton {
-        text-align: left;
-        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
     }
-    .stTitle {
-        color: #4A90E2;
+    .result-box {
+        margin-top: 30px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f0f2f6;
         text-align: center;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Game title
+# Title
 st.title("🪨 📄 ✂️ Rock, Paper, Scissors")
 
-# Game instructions
-st.write("Choose one and play against the computer!")
+# Instructions
+st.write("Choose your move and see what the computer picks!")
 
-# User choice
-user_choice = st.radio("Your choice:", ("rock", "paper", "scissors"), horizontal=True)
+# Choices
+user_choice = st.radio("Select your move:", ("rock", "paper", "scissors"), horizontal=True)
 
 # Game logic
 if st.button("Play"):
-    comp = random.choice(["rock", "paper", "scissors"])
-    st.write(f"**Computer chose:** {comp}")
-    if user_choice == comp:
-        st.success("It's a tie!")
-    elif (user_choice == "rock" and comp == "scissors") or \
-         (user_choice == "paper" and comp == "rock") or \
-         (user_choice == "scissors" and comp == "paper"):
-        st.success("You win! 🎉")
+    computer_choice = random.choice(["rock", "paper", "scissors"])
+    
+    # Determine result
+    if user_choice == computer_choice:
+        result = "It's a tie!"
+    elif (user_choice == "rock" and computer_choice == "scissors") or \
+         (user_choice == "paper" and computer_choice == "rock") or \
+         (user_choice == "scissors" and computer_choice == "paper"):
+        result = "You win! 🎉"
     else:
-        st.error("You lose! 😢")
+        result = "Computer wins! 🤖"
+
+    # Show results
+    st.markdown(f"""
+    <div class="result-box">
+        <p><strong>You chose:</strong> {user_choice}</p>
+        <p><strong>Computer chose:</strong> {computer_choice}</p>
+        <h3>{result}</h3>
+    </div>
+    """, unsafe_allow_html=True)
