@@ -23,7 +23,6 @@ st.markdown("""
         border-radius: 10px;
         background-color: #90EE90;
         text-align: center;
-      color: #fff;
     }
     </style>
 """, unsafe_allow_html=True)
