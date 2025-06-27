@@ -20,7 +20,7 @@ st.markdown("""
     .result-box {
         margin-top: 30px;
         padding: 15px;
-        padding-top: 25px !important;
+        padding-top: 40px !important;
         border-radius: 10px;
         background-color: #90EE90;
         text-align: center;
