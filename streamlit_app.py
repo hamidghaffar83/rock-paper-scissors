@@ -16,7 +16,7 @@ st.markdown("""
         gap: 20px;
     }
     .stButton {
-        text-align: center;
+        text-align: left;
         padding-top: 20px;
     }
     .stTitle {
